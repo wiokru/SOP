@@ -42,17 +42,17 @@ public class AddVisitPanel extends JFrame{
         GroupLayout.Group verticalGroupPatient = form.createParallelGroup();
         GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel date_label = new JLabel (LabelsConstants.DATE);
-        horizontalGroup1.addComponent(date_label);
-        verticalGroupDate.addComponent(date_label);
+        JLabel dateLabel = new JLabel (LabelsConstants.DATE);
+        horizontalGroup1.addComponent(dateLabel);
+        verticalGroupDate.addComponent(dateLabel);
 
-        JLabel hour_label = new JLabel (LabelsConstants.HOUR);
-        horizontalGroup1.addComponent(hour_label);
-        verticalGroupHour.addComponent(hour_label);
+        JLabel hourLabel = new JLabel (LabelsConstants.HOUR);
+        horizontalGroup1.addComponent(hourLabel);
+        verticalGroupHour.addComponent(hourLabel);
 
-        JLabel doctor_label = new JLabel (LabelsConstants.DOCTOR);
-        horizontalGroup1.addComponent(doctor_label);
-        verticalGroupDoctor.addComponent(doctor_label);
+        JLabel doctorLabel = new JLabel (LabelsConstants.DOCTOR);
+        horizontalGroup1.addComponent(doctorLabel);
+        verticalGroupDoctor.addComponent(doctorLabel);
 
         JLabel patient_label = new JLabel (LabelsConstants.PATIENT);
         horizontalGroup1.addComponent(patient_label);
@@ -99,9 +99,9 @@ public class AddVisitPanel extends JFrame{
         horizontalGroup2.addComponent(save);
         verticalGroupSave.addComponent(save);
 
-        date_label.setLabelFor(date);
-        hour_label.setLabelFor(hours);
-        doctor_label.setLabelFor(doctors);
+        dateLabel.setLabelFor(date);
+        hourLabel.setLabelFor(hours);
+        doctorLabel.setLabelFor(doctors);
         patient_label.setLabelFor(patients);
 
         date.isEditable();
@@ -123,24 +123,24 @@ public class AddVisitPanel extends JFrame{
         save.addActionListener(e -> {
             String d = date.getText();
             DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-            Date visit_date;
+            Date visitDate;
 
             try {
-                visit_date = format.parse(d);
+                visitDate = format.parse(d);
                 String hour = (String) hours.getSelectedItem();
                 String[] visit_hour = hour.split("\\.");
-                visit_date.setHours(Integer.parseInt(visit_hour[0]));
-                visit_date.setMinutes(Integer.parseInt(visit_hour[1]));
+                visitDate.setHours(Integer.parseInt(visit_hour[0]));
+                visitDate.setMinutes(Integer.parseInt(visit_hour[1]));
 
                 Long possibleTermin = SOP.visits.stream()
-                        .filter(visit -> visit.getDate().equals(visit_date))
+                        .filter(visit -> visit.getDate().equals(visitDate))
                         .filter(visit -> visit.getDoctor().equals(doctors.getSelectedItem()))
                         .count();
 
                 if (possibleTermin > 0)
                     JOptionPane.showMessageDialog(addVisitForm, LabelsConstants.ADD_VISIT_ERROR, null, JOptionPane.WARNING_MESSAGE);
                 else {
-                    Visit visit = new Visit(visit_date, (Doctor) doctors.getSelectedItem(), (Patient) patients.getSelectedItem());
+                    Visit visit = new Visit(visitDate, (Doctor) doctors.getSelectedItem(), (Patient) patients.getSelectedItem());
                     SOP.visits.add(visit);
                     JOptionPane.showMessageDialog(addVisitForm, LabelsConstants.ADD_VISIT_SUCCESS);
                     dispose();
@@ -173,17 +173,17 @@ public class AddVisitPanel extends JFrame{
         GroupLayout.Group verticalGroupPatient = form.createParallelGroup();
         GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel date_label = new JLabel (LabelsConstants.DATE);
-        horizontalGroup1.addComponent(date_label);
-        verticalGroupDate.addComponent(date_label);
+        JLabel dateLabel = new JLabel (LabelsConstants.DATE);
+        horizontalGroup1.addComponent(dateLabel);
+        verticalGroupDate.addComponent(dateLabel);
 
-        JLabel hour_label = new JLabel (LabelsConstants.HOUR);
-        horizontalGroup1.addComponent(hour_label);
-        verticalGroupHour.addComponent(hour_label);
+        JLabel hourLabel = new JLabel (LabelsConstants.HOUR);
+        horizontalGroup1.addComponent(hourLabel);
+        verticalGroupHour.addComponent(hourLabel);
 
-        JLabel doctor_label = new JLabel (LabelsConstants.DOCTOR);
-        horizontalGroup1.addComponent(doctor_label);
-        verticalGroupDoctor.addComponent(doctor_label);
+        JLabel doctorLabel = new JLabel (LabelsConstants.DOCTOR);
+        horizontalGroup1.addComponent(doctorLabel);
+        verticalGroupDoctor.addComponent(doctorLabel);
 
         JLabel patient_label = new JLabel (LabelsConstants.PATIENT);
         horizontalGroup1.addComponent(patient_label);
@@ -255,9 +255,9 @@ public class AddVisitPanel extends JFrame{
         horizontalGroup2.addComponent(save);
         verticalGroupSave.addComponent(save);
 
-        date_label.setLabelFor(date);
-        hour_label.setLabelFor(hours);
-        doctor_label.setLabelFor(doctors);
+        dateLabel.setLabelFor(date);
+        hourLabel.setLabelFor(hours);
+        doctorLabel.setLabelFor(doctors);
         patient_label.setLabelFor(patients);
 
         date.isEditable();
@@ -281,24 +281,24 @@ public class AddVisitPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String d = date.getText();
                 DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                Date visit_date = null;
+                Date visitDate = null;
                 boolean free_date_flag = true;
 
                 try {
-                    visit_date = format.parse(d);
+                    visitDate = format.parse(d);
                     String hr = (String)hours.getSelectedItem();
                     String[] visit_hour = hr.split("\\.");
-                    visit_date.setHours(Integer.parseInt(visit_hour[0]));
-                    visit_date.setMinutes(Integer.parseInt(visit_hour[1]));
+                    visitDate.setHours(Integer.parseInt(visit_hour[0]));
+                    visitDate.setMinutes(Integer.parseInt(visit_hour[1]));
 
                     for (Visit v : SOP.visits){
-                        if (v.getDate().equals(visit_date) && v.getDoctor().equals(doctors.getSelectedItem())){
+                        if (v.getDate().equals(visitDate) && v.getDoctor().equals(doctors.getSelectedItem())){
                             free_date_flag = false;
                         }
                     }
 
                     if (free_date_flag) {
-                        v.setDate(visit_date);
+                        v.setDate(visitDate);
                         v.setDoctor((Doctor) doctors.getSelectedItem());
                         v.setPatient((Patient) patients.getSelectedItem());
 
@@ -337,17 +337,17 @@ public class AddVisitPanel extends JFrame{
         GroupLayout.Group verticalGroupDoctor = form.createParallelGroup();
         GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel date_label = new JLabel ("Data: ");
-        horizontalGroup1.addComponent(date_label);
-        verticalGroupDate.addComponent(date_label);
+        JLabel dateLabel = new JLabel ("Data: ");
+        horizontalGroup1.addComponent(dateLabel);
+        verticalGroupDate.addComponent(dateLabel);
 
-        JLabel hour_label = new JLabel ("Godzina: ");
-        horizontalGroup1.addComponent(hour_label);
-        verticalGroupHour.addComponent(hour_label);
+        JLabel hourLabel = new JLabel ("Godzina: ");
+        horizontalGroup1.addComponent(hourLabel);
+        verticalGroupHour.addComponent(hourLabel);
 
-        JLabel doctor_label = new JLabel ("Lekarz: ");
-        horizontalGroup1.addComponent(doctor_label);
-        verticalGroupDoctor.addComponent(doctor_label);
+        JLabel doctorLabel = new JLabel ("Lekarz: ");
+        horizontalGroup1.addComponent(doctorLabel);
+        verticalGroupDoctor.addComponent(doctorLabel);
 
         JTextField date = new JTextField("DD.MM.YYYY", 25);
         horizontalGroup2.addComponent(date);
@@ -385,9 +385,9 @@ public class AddVisitPanel extends JFrame{
         horizontalGroup2.addComponent(save);
         verticalGroupSave.addComponent(save);
 
-        date_label.setLabelFor(date);
-        hour_label.setLabelFor(hours);
-        doctor_label.setLabelFor(doctors);
+        dateLabel.setLabelFor(date);
+        hourLabel.setLabelFor(hours);
+        doctorLabel.setLabelFor(doctors);
 
         date.isEditable();
 
@@ -409,18 +409,18 @@ public class AddVisitPanel extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String d = date.getText();
                 DateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-                Date visit_date = null;
+                Date visitDate = null;
                 boolean free_date_flag = true;
 
                 try {
-                    visit_date = format.parse(d);
+                    visitDate = format.parse(d);
                     String hr = (String)hours.getSelectedItem();
                     String[] visit_hour = hr.split("\\.");
-                    visit_date.setHours(Integer.parseInt(visit_hour[0]));
-                    visit_date.setMinutes(Integer.parseInt(visit_hour[1]));
+                    visitDate.setHours(Integer.parseInt(visit_hour[0]));
+                    visitDate.setMinutes(Integer.parseInt(visit_hour[1]));
 
                     for (Visit v : SOP.visits){
-                        if (v.getDate().equals(visit_date) && v.getDoctor().equals(doctors.getSelectedItem())){
+                        if (v.getDate().equals(visitDate) && v.getDoctor().equals(doctors.getSelectedItem())){
                             free_date_flag = false;
                         }
                     }
@@ -428,7 +428,7 @@ public class AddVisitPanel extends JFrame{
                     if (!free_date_flag)
                         JOptionPane.showMessageDialog(addVisitForm, "Nie można dodać wizyty. Wybierz inny termin lub lekarza.", null, JOptionPane.WARNING_MESSAGE);
                     else {
-                        Visit visit = new Visit(visit_date, (Doctor) doctors.getSelectedItem(), patient);
+                        Visit visit = new Visit(visitDate, (Doctor) doctors.getSelectedItem(), patient);
                         SOP.visits.add(visit);
                         JOptionPane.showMessageDialog(addVisitForm, "Dodano wizytę.");
                     }

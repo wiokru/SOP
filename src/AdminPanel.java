@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public class AdminPanel extends JFrame {
 
-    private JPanel main_menu;
+    private JPanel mainMenu;
 
     public AdminPanel() {
         super(LabelsConstants.ADMIN_TITLE);
 
-        main_menu = new JPanel();
-        main_menu.setLayout(new GridLayout(12, 1));
+        mainMenu = new JPanel();
+        mainMenu.setLayout(new GridLayout(12, 1));
 
         JButton logOutButton = new JButton(LabelsConstants.LOGOUT);
         JButton addDoctorButton = new JButton(LabelsConstants.ADD_DOCTOR);
@@ -30,18 +30,18 @@ public class AdminPanel extends JFrame {
         JButton showDoctorsButton = new JButton(LabelsConstants.SHOW_DOCTORS);
         JButton showPatientsButton = new JButton(LabelsConstants.SHOW_PATIENTS);
 
-        main_menu.add(logOutButton);
-        main_menu.add(addDoctorButton);
-        main_menu.add(addPatientButton);
-        main_menu.add(addVisitButton);
-        main_menu.add(modyfiPatientButton);
-        main_menu.add(modifyVisitButton);
-        main_menu.add(cancelVisitButton);
-        main_menu.add(deleteDoctorButton);
-        main_menu.add(deletePatientButton);
-        main_menu.add(showVisitsButton);
-        main_menu.add(showDoctorsButton);
-        main_menu.add(showPatientsButton);
+        mainMenu.add(logOutButton);
+        mainMenu.add(addDoctorButton);
+        mainMenu.add(addPatientButton);
+        mainMenu.add(addVisitButton);
+        mainMenu.add(modyfiPatientButton);
+        mainMenu.add(modifyVisitButton);
+        mainMenu.add(cancelVisitButton);
+        mainMenu.add(deleteDoctorButton);
+        mainMenu.add(deletePatientButton);
+        mainMenu.add(showVisitsButton);
+        mainMenu.add(showDoctorsButton);
+        mainMenu.add(showPatientsButton);
 
         logOutButton.addActionListener(e -> dispose());
         addDoctorButton.addActionListener(e -> new AddDoctorPanel());
@@ -54,39 +54,41 @@ public class AdminPanel extends JFrame {
                     .filter(u -> u instanceof Patient)
                     .forEach(u -> pats.add((Patient) u));
             JComboBox<Patient> patients = new JComboBox<>(pats.toArray(new Patient[pats.size()]));
-            JOptionPane.showMessageDialog(main_menu, patients, LabelsConstants.CHOOSE_PATIENT, JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(mainMenu, patients, LabelsConstants.CHOOSE_PATIENT, JOptionPane.QUESTION_MESSAGE);
 
             Patient patient = (Patient) patients.getSelectedItem();
 
             if (patient != null)
                 new AddPatientPanel(patient);
             else
-                JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
 
         });
 
         modifyVisitButton.addActionListener(e -> {
             Visit[] vts = SOP.visits.toArray(new Visit[SOP.visits.size()]);
             JComboBox<Visit> visits = new JComboBox<>(vts);
-            JOptionPane.showMessageDialog(main_menu, visits, LabelsConstants.CHOOSE_VISIT, JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(mainMenu, visits, LabelsConstants.CHOOSE_VISIT, JOptionPane.QUESTION_MESSAGE);
 
             Visit v = (Visit) visits.getSelectedItem();
             if (v != null)
                 new AddVisitPanel(v);
             else
-                JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
         });
 
         cancelVisitButton.addActionListener(e -> {
             Visit[] vts = SOP.visits.toArray(new Visit[SOP.visits.size()]);
             JComboBox<Visit> vis = new JComboBox<>(vts);
 
-            if (JOptionPane.showConfirmDialog(main_menu, vis, LabelsConstants.CHOOSE_VISIT, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(mainMenu, vis, LabelsConstants.CHOOSE_VISIT,
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 Visit visit = (Visit) vis.getSelectedItem();
                 if (visit != null)
                     SOP.visits.remove(visit);
                 else
-                    JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null,
+                            JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -97,12 +99,14 @@ public class AdminPanel extends JFrame {
                     .toArray(Doctor[]::new);
             JComboBox<Doctor> doctors = new JComboBox<>(doc);
 
-            if (JOptionPane.showConfirmDialog(main_menu, doctors, LabelsConstants.CHOOSE_DOCTOR, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(mainMenu, doctors, LabelsConstants.CHOOSE_DOCTOR,
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 Doctor doctor = (Doctor) doctors.getSelectedItem();
                 if (doctor != null)
                     SOP.users.remove(doctor);
                 else
-                    JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null,
+                            JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -113,14 +117,16 @@ public class AdminPanel extends JFrame {
                     .toArray(Patient[]::new);
             JComboBox<Patient> patients = new JComboBox<>(pats);
 
-            if (JOptionPane.showConfirmDialog(main_menu, patients, LabelsConstants.CHOOSE_PATIENT, JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(mainMenu, patients, LabelsConstants.CHOOSE_PATIENT,
+                    JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 Patient patient = (Patient) patients.getSelectedItem();
                 if (patient != null) {
                     SOP.users.remove(patient);
                     SOP.visits.stream().filter(visit -> visit.getPatient().equals(patients.getSelectedItem()))
                             .forEach(visit -> SOP.visits.remove(visit));
                 } else
-                    JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null,
+                            JOptionPane.ERROR_MESSAGE);
             }
         });
 
@@ -128,7 +134,7 @@ public class AdminPanel extends JFrame {
         showPatientsButton.addActionListener(e -> new ShowItemPanel(Patient.class));
         showDoctorsButton.addActionListener(e -> new ShowItemPanel(Doctor.class));
 
-        add(main_menu);
+        add(mainMenu);
         this.pack();
         this.setSize(800, 600);
         setVisible(true);

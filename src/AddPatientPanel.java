@@ -21,71 +21,71 @@ public class AddPatientPanel extends JFrame {
         GroupLayout.Group hg1 = form.createParallelGroup(GroupLayout.Alignment.TRAILING);
         GroupLayout.Group hg2 = form.createParallelGroup();
 
-        GroupLayout.Group vg_name = form.createParallelGroup();
-        GroupLayout.Group vg_surname = form.createParallelGroup();
-        GroupLayout.Group vg_address = form.createParallelGroup();
-        GroupLayout.Group vg_phone = form.createParallelGroup();
-        GroupLayout.Group vg_email = form.createParallelGroup();
-        GroupLayout.Group vg_password = form.createParallelGroup();
-        GroupLayout.Group vg_save = form.createParallelGroup();
+        GroupLayout.Group verticalGroupName = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSurname = form.createParallelGroup();
+        GroupLayout.Group verticalGroupAddress = form.createParallelGroup();
+        GroupLayout.Group verticalGroupPhone = form.createParallelGroup();
+        GroupLayout.Group verticalGroupEmail = form.createParallelGroup();
+        GroupLayout.Group verticalGroupPassword = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel name_label = new JLabel (LabelsConstants.NAME);
-        hg1.addComponent(name_label);
-        vg_name.addComponent(name_label);
+        JLabel nameLabel = new JLabel (LabelsConstants.NAME);
+        hg1.addComponent(nameLabel);
+        verticalGroupName.addComponent(nameLabel);
 
-        JLabel surname_label = new JLabel (LabelsConstants.SURNAME);
-        hg1.addComponent(surname_label);
-        vg_surname.addComponent(surname_label);
+        JLabel surnameLabel = new JLabel (LabelsConstants.SURNAME);
+        hg1.addComponent(surnameLabel);
+        verticalGroupSurname.addComponent(surnameLabel);
 
-        JLabel address_label = new JLabel(LabelsConstants.ADDRESS);
-        hg1.addComponent(address_label);
-        vg_address.addComponent(address_label);
+        JLabel addressLabel = new JLabel(LabelsConstants.ADDRESS);
+        hg1.addComponent(addressLabel);
+        verticalGroupAddress.addComponent(addressLabel);
 
-        JLabel phone_label = new JLabel(LabelsConstants.PHONE);
-        hg1.addComponent(phone_label);
-        vg_phone.addComponent(phone_label);
+        JLabel phoneLabel = new JLabel(LabelsConstants.PHONE);
+        hg1.addComponent(phoneLabel);
+        verticalGroupPhone.addComponent(phoneLabel);
 
-        JLabel email_label = new JLabel (LabelsConstants.EMAIL);
-        hg1.addComponent(email_label);
-        vg_email.addComponent(email_label);
+        JLabel emailLabel = new JLabel (LabelsConstants.EMAIL);
+        hg1.addComponent(emailLabel);
+        verticalGroupEmail.addComponent(emailLabel);
 
         JLabel password_label = new JLabel (LabelsConstants.TEMPORARY_PASSWORD);
         hg1.addComponent(password_label);
-        vg_password.addComponent(password_label);
+        verticalGroupPassword.addComponent(password_label);
 
         JTextField name = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(name);
-        vg_name.addComponent(name);
+        verticalGroupName.addComponent(name);
 
         JTextField surname = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(surname);
-        vg_surname.addComponent(surname);
+        verticalGroupSurname.addComponent(surname);
 
         JTextField address = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(address);
-        vg_address.addComponent(address);
+        verticalGroupAddress.addComponent(address);
 
         JTextField phone = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(phone);
-        vg_phone.addComponent(phone);
+        verticalGroupPhone.addComponent(phone);
 
         JTextField email = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(email);
-        vg_email.addComponent(email);
+        verticalGroupEmail.addComponent(email);
 
         JTextField password = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(password);
-        vg_password.addComponent(password);
+        verticalGroupPassword.addComponent(password);
 
         JButton save = new JButton(LabelsConstants.SAVE_BTN);
         hg2.addComponent(save);
-        vg_save.addComponent(save);
+        verticalGroupSave.addComponent(save);
 
-        name_label.setLabelFor(name);
-        surname_label.setLabelFor(surname);
-        address_label.setLabelFor(address);
-        phone_label.setLabelFor(phone);
-        email_label.setLabelFor(email);
+        nameLabel.setLabelFor(name);
+        surnameLabel.setLabelFor(surname);
+        addressLabel.setLabelFor(address);
+        phoneLabel.setLabelFor(phone);
+        emailLabel.setLabelFor(email);
         password_label.setLabelFor(password);
 
         name.isEditable();
@@ -100,13 +100,13 @@ public class AddPatientPanel extends JFrame {
         hseq.addGroup(hg2);
 
         GroupLayout.SequentialGroup vseq = form.createSequentialGroup();
-        vseq.addGroup(vg_name);
-        vseq.addGroup(vg_surname);
-        vseq.addGroup(vg_address);
-        vseq.addGroup(vg_phone);
-        vseq.addGroup(vg_email);
-        vseq.addGroup(vg_password);
-        vseq.addGroup(vg_save);
+        vseq.addGroup(verticalGroupName);
+        vseq.addGroup(verticalGroupSurname);
+        vseq.addGroup(verticalGroupAddress);
+        vseq.addGroup(verticalGroupPhone);
+        vseq.addGroup(verticalGroupEmail);
+        vseq.addGroup(verticalGroupPassword);
+        vseq.addGroup(verticalGroupSave);
 
         form.setHorizontalGroup(hseq);
         form.setVerticalGroup(vseq);
@@ -138,7 +138,8 @@ public class AddPatientPanel extends JFrame {
                 }
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null,
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
     }
@@ -153,67 +154,67 @@ public class AddPatientPanel extends JFrame {
         GroupLayout.Group hg1 = form.createParallelGroup(GroupLayout.Alignment.TRAILING);
         GroupLayout.Group hg2 = form.createParallelGroup();
 
-        GroupLayout.Group vg_name = form.createParallelGroup();
-        GroupLayout.Group vg_surname = form.createParallelGroup();
-        GroupLayout.Group vg_address = form.createParallelGroup();
-        GroupLayout.Group vg_phone = form.createParallelGroup();
-        GroupLayout.Group vg_email = form.createParallelGroup();
-        GroupLayout.Group vg_save = form.createParallelGroup();
+        GroupLayout.Group verticalGroupName = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSurname = form.createParallelGroup();
+        GroupLayout.Group verticalGroupAddress = form.createParallelGroup();
+        GroupLayout.Group verticalGroupPhone = form.createParallelGroup();
+        GroupLayout.Group verticalGroupEmail = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel name_label = new JLabel (LabelsConstants.NAME);
-        hg1.addComponent(name_label);
-        vg_name.addComponent(name_label);
+        JLabel nameLabel = new JLabel (LabelsConstants.NAME);
+        hg1.addComponent(nameLabel);
+        verticalGroupName.addComponent(nameLabel);
 
-        JLabel surname_label = new JLabel (LabelsConstants.SURNAME);
-        hg1.addComponent(surname_label);
-        vg_surname.addComponent(surname_label);
+        JLabel surnameLabel = new JLabel (LabelsConstants.SURNAME);
+        hg1.addComponent(surnameLabel);
+        verticalGroupSurname.addComponent(surnameLabel);
 
-        JLabel address_label = new JLabel(LabelsConstants.ADDRESS);
-        hg1.addComponent(address_label);
-        vg_address.addComponent(address_label);
+        JLabel addressLabel = new JLabel(LabelsConstants.ADDRESS);
+        hg1.addComponent(addressLabel);
+        verticalGroupAddress.addComponent(addressLabel);
 
-        JLabel phone_label = new JLabel(LabelsConstants.PHONE);
-        hg1.addComponent(phone_label);
-        vg_phone.addComponent(phone_label);
+        JLabel phoneLabel = new JLabel(LabelsConstants.PHONE);
+        hg1.addComponent(phoneLabel);
+        verticalGroupPhone.addComponent(phoneLabel);
 
-        JLabel email_label = new JLabel (LabelsConstants.EMAIL);
-        hg1.addComponent(email_label);
-        vg_email.addComponent(email_label);
+        JLabel emailLabel = new JLabel (LabelsConstants.EMAIL);
+        hg1.addComponent(emailLabel);
+        verticalGroupEmail.addComponent(emailLabel);
 
         JTextField name = new JTextField(TEXT_FIELD_SIZE);
         name.setText(p.getName());
         hg2.addComponent(name);
-        vg_name.addComponent(name);
+        verticalGroupName.addComponent(name);
 
         JTextField surname = new JTextField(TEXT_FIELD_SIZE);
         surname.setText(p.getSurname());
         hg2.addComponent(surname);
-        vg_surname.addComponent(surname);
+        verticalGroupSurname.addComponent(surname);
 
         JTextField address = new JTextField(TEXT_FIELD_SIZE);
         address.setText(p.getAddress());
         hg2.addComponent(address);
-        vg_address.addComponent(address);
+        verticalGroupAddress.addComponent(address);
 
         JTextField phone = new JTextField(TEXT_FIELD_SIZE);
         phone.setText(p.getPhone());
         hg2.addComponent(phone);
-        vg_phone.addComponent(phone);
+        verticalGroupPhone.addComponent(phone);
 
         JTextField email = new JTextField(TEXT_FIELD_SIZE);
         email.setText(p.getEmail());
         hg2.addComponent(email);
-        vg_email.addComponent(email);
+        verticalGroupEmail.addComponent(email);
 
         JButton save = new JButton(LabelsConstants.SAVE_BTN);
         hg2.addComponent(save);
-        vg_save.addComponent(save);
+        verticalGroupSave.addComponent(save);
 
-        name_label.setLabelFor(name);
-        surname_label.setLabelFor(surname);
-        address_label.setLabelFor(address);
-        phone_label.setLabelFor(phone);
-        email_label.setLabelFor(email);
+        nameLabel.setLabelFor(name);
+        surnameLabel.setLabelFor(surname);
+        addressLabel.setLabelFor(address);
+        phoneLabel.setLabelFor(phone);
+        emailLabel.setLabelFor(email);
 
         name.isEditable();
         surname.isEditable();
@@ -226,12 +227,12 @@ public class AddPatientPanel extends JFrame {
         hseq.addGroup(hg2);
 
         GroupLayout.SequentialGroup vseq = form.createSequentialGroup();
-        vseq.addGroup(vg_name);
-        vseq.addGroup(vg_surname);
-        vseq.addGroup(vg_address);
-        vseq.addGroup(vg_phone);
-        vseq.addGroup(vg_email);
-        vseq.addGroup(vg_save);
+        vseq.addGroup(verticalGroupName);
+        vseq.addGroup(verticalGroupSurname);
+        vseq.addGroup(verticalGroupAddress);
+        vseq.addGroup(verticalGroupPhone);
+        vseq.addGroup(verticalGroupEmail);
+        vseq.addGroup(verticalGroupSave);
 
         form.setHorizontalGroup(hseq);
         form.setVerticalGroup(vseq);
@@ -255,7 +256,8 @@ public class AddPatientPanel extends JFrame {
                 dispose();
             }
             else{
-                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null,
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
     }

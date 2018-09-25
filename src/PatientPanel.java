@@ -12,8 +12,8 @@ public class PatientPanel extends JFrame {
     public PatientPanel(Patient patient) {
         super(LabelsConstants.HELLO + patient.getName() + " " + patient.getSurname());
 
-        JPanel main_menu = new JPanel();
-        main_menu.setLayout(new GridLayout(6, 1));
+        JPanel mainMenu = new JPanel();
+        mainMenu.setLayout(new GridLayout(6, 1));
 
         JButton logOutButton = new JButton(LabelsConstants.LOGOUT);
         JButton changeEmailButton = new JButton(LabelsConstants.CHANGE_EMAIL_BTN);
@@ -22,26 +22,26 @@ public class PatientPanel extends JFrame {
         JButton cancelVisitButton = new JButton(LabelsConstants.CANCEL_VISIT);
         JButton showVisitsButton = new JButton(LabelsConstants.SHOW_VISITS);
 
-        main_menu.add(logOutButton);
-        main_menu.add(changeEmailButton);
-        main_menu.add(changePasswordButton);
-        main_menu.add(addVisitButton);
-        main_menu.add(cancelVisitButton);
-        main_menu.add(showVisitsButton);
+        mainMenu.add(logOutButton);
+        mainMenu.add(changeEmailButton);
+        mainMenu.add(changePasswordButton);
+        mainMenu.add(addVisitButton);
+        mainMenu.add(cancelVisitButton);
+        mainMenu.add(showVisitsButton);
 
         logOutButton.addActionListener(e -> dispose());
         changeEmailButton.addActionListener(e -> {
             Pattern pattern = Pattern.compile(".+@.+\\.[a-z]+");
-            String temp = JOptionPane.showInputDialog(main_menu, LabelsConstants.EMAIL_CHANGE);
+            String temp = JOptionPane.showInputDialog(mainMenu, LabelsConstants.EMAIL_CHANGE);
             Matcher m = pattern.matcher(temp);
             if (m.matches())
                 patient.setEmail(temp);
             else
-                JOptionPane.showMessageDialog(main_menu, LabelsConstants.WRONG_EMAIL_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainMenu, LabelsConstants.WRONG_EMAIL_ERROR, null, JOptionPane.ERROR_MESSAGE);
         });
 
         changePasswordButton.addActionListener(e -> {
-            String temp = JOptionPane.showInputDialog(main_menu, LabelsConstants.PASSWORD_CHANGE);
+            String temp = JOptionPane.showInputDialog(mainMenu, LabelsConstants.PASSWORD_CHANGE);
             patient.setPassword(temp.toCharArray());
         });
 
@@ -51,13 +51,13 @@ public class PatientPanel extends JFrame {
                     .filter(visit -> visit.getPatient().equals(patient))
                     .toArray(Visit[]::new);
             JComboBox<Visit> vis = new JComboBox<>(my_vts);
-            JOptionPane.showMessageDialog(main_menu, vis, LabelsConstants.CHOOSE_VISIT, JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(mainMenu, vis, LabelsConstants.CHOOSE_VISIT, JOptionPane.QUESTION_MESSAGE);
             Visit visit = (Visit) vis.getSelectedItem();
 
             if (visit != null)
                 SOP.visits.remove(visit);
             else
-                JOptionPane.showMessageDialog(main_menu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(mainMenu, LabelsConstants.NO_CHOICE_ERROR, null, JOptionPane.ERROR_MESSAGE);
         });
 
         showVisitsButton.addActionListener(e -> {
@@ -70,10 +70,10 @@ public class PatientPanel extends JFrame {
             JPanel panel = new JPanel();
             panel.add(visits_scroll);
             visits_scroll.getViewport().add(visits);
-            JOptionPane.showMessageDialog(main_menu, visits_scroll, LabelsConstants.YOUR_VISITS, JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(mainMenu, visits_scroll, LabelsConstants.YOUR_VISITS, JOptionPane.PLAIN_MESSAGE);
         });
 
-        add(main_menu);
+        add(mainMenu);
         this.pack();
         this.setSize(800, 600);
         setVisible(true);

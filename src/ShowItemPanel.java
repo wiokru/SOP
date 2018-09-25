@@ -33,7 +33,9 @@ public class ShowItemPanel extends JFrame{
         }
         else{ // (cls == Visit.class)
             DefaultListModel<String> visits = new DefaultListModel<>();
-            SOP.visits.stream().map(Visit::toString).forEach(visits::addElement);
+            SOP.visits.stream()
+                    .map(Visit::toString)
+                    .forEach(visits::addElement);
             itemList = new JList<>(visits);
         }
 

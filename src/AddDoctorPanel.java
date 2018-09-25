@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 public class AddDoctorPanel extends JFrame {
 
     private static final int TEXT_FIELD_SIZE = 25;
-
     private Pattern pattern = Pattern.compile(".+@.+\\.[a-z]+");
 
     public AddDoctorPanel(){
@@ -21,66 +20,66 @@ public class AddDoctorPanel extends JFrame {
         GroupLayout.Group hg1 = form.createParallelGroup(GroupLayout.Alignment.TRAILING);
         GroupLayout.Group hg2 = form.createParallelGroup();
 
-        GroupLayout.Group vg_name = form.createParallelGroup();
-        GroupLayout.Group vg_surname = form.createParallelGroup();
-        GroupLayout.Group vg_spec = form.createParallelGroup();
-        GroupLayout.Group vg_email = form.createParallelGroup();
-        GroupLayout.Group vg_password = form.createParallelGroup();
-        GroupLayout.Group vg_save = form.createParallelGroup();
+        GroupLayout.Group verticalGroupName = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSurname = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSpecialization = form.createParallelGroup();
+        GroupLayout.Group verticalGroupEmail = form.createParallelGroup();
+        GroupLayout.Group verticalGroupPassword = form.createParallelGroup();
+        GroupLayout.Group verticalGroupSave = form.createParallelGroup();
 
-        JLabel name_label = new JLabel (LabelsConstants.NAME);
-        hg1.addComponent(name_label);
-        vg_name.addComponent(name_label);
+        JLabel nameLabel = new JLabel (LabelsConstants.NAME);
+        hg1.addComponent(nameLabel);
+        verticalGroupName.addComponent(nameLabel);
 
-        JLabel surname_label = new JLabel (LabelsConstants.SURNAME);
-        hg1.addComponent(surname_label);
-        vg_surname.addComponent(surname_label);
+        JLabel surnameLabel = new JLabel (LabelsConstants.SURNAME);
+        hg1.addComponent(surnameLabel);
+        verticalGroupSurname.addComponent(surnameLabel);
 
-        JLabel spec_label = new JLabel (LabelsConstants.SPECIALIZATION);
-        hg1.addComponent(spec_label);
-        vg_spec.addComponent(spec_label);
+        JLabel specializationLabel = new JLabel (LabelsConstants.SPECIALIZATION);
+        hg1.addComponent(specializationLabel);
+        verticalGroupSpecialization.addComponent(specializationLabel);
 
-        JLabel email_label = new JLabel (LabelsConstants.EMAIL);
-        hg1.addComponent(email_label);
-        vg_email.addComponent(email_label);
+        JLabel emailLabel = new JLabel (LabelsConstants.EMAIL);
+        hg1.addComponent(emailLabel);
+        verticalGroupEmail.addComponent(emailLabel);
 
-        JLabel password_label = new JLabel (LabelsConstants.TEMPORARY_PASSWORD);
-        hg1.addComponent(password_label);
-        vg_password.addComponent(password_label);
+        JLabel passwordLabel = new JLabel (LabelsConstants.TEMPORARY_PASSWORD);
+        hg1.addComponent(passwordLabel);
+        verticalGroupPassword.addComponent(passwordLabel);
 
         JTextField name = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(name);
-        vg_name.addComponent(name);
+        verticalGroupName.addComponent(name);
 
         JTextField surname = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(surname);
-        vg_surname.addComponent(surname);
+        verticalGroupSurname.addComponent(surname);
 
-        JTextField spec = new JTextField(TEXT_FIELD_SIZE);
-        hg2.addComponent(spec);
-        vg_spec.addComponent(spec);
+        JTextField specialization = new JTextField(TEXT_FIELD_SIZE);
+        hg2.addComponent(specialization);
+        verticalGroupSpecialization.addComponent(specialization);
 
         JTextField email = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(email);
-        vg_email.addComponent(email);
+        verticalGroupEmail.addComponent(email);
 
         JTextField password = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(password);
-        vg_password.addComponent(password);
+        verticalGroupPassword.addComponent(password);
 
-        JButton save = new JButton("ZAPISZ");
+        JButton save = new JButton(LabelsConstants.SAVE_BTN);
         hg2.addComponent(save);
-        vg_save.addComponent(save);
+        verticalGroupSave.addComponent(save);
 
-        name_label.setLabelFor(name);
-        surname_label.setLabelFor(surname);
-        spec_label.setLabelFor(spec);
-        email_label.setLabelFor(email);
-        password_label.setLabelFor(password);
+        nameLabel.setLabelFor(name);
+        surnameLabel.setLabelFor(surname);
+        specializationLabel.setLabelFor(specialization);
+        emailLabel.setLabelFor(email);
+        passwordLabel.setLabelFor(password);
 
         name.isEditable();
         surname.isEditable();
-        spec.isEditable();
+        specialization.isEditable();
         email.isEditable();
         password.isEditable();
 
@@ -89,12 +88,12 @@ public class AddDoctorPanel extends JFrame {
         hseq.addGroup(hg2);
 
         GroupLayout.SequentialGroup vseq = form.createSequentialGroup();
-        vseq.addGroup(vg_name);
-        vseq.addGroup(vg_surname);
-        vseq.addGroup(vg_spec);
-        vseq.addGroup(vg_email);
-        vseq.addGroup(vg_password);
-        vseq.addGroup(vg_save);
+        vseq.addGroup(verticalGroupName);
+        vseq.addGroup(verticalGroupSurname);
+        vseq.addGroup(verticalGroupSpecialization);
+        vseq.addGroup(verticalGroupEmail);
+        vseq.addGroup(verticalGroupPassword);
+        vseq.addGroup(verticalGroupSave);
 
         form.setHorizontalGroup(hseq);
         form.setVerticalGroup(vseq);
@@ -111,7 +110,7 @@ public class AddDoctorPanel extends JFrame {
                 Doctor d = Doctor.builder().id(LocalDateTime.now().toString())
                         .name(name.getText())
                         .surname(surname.getText())
-                        .specialization(spec.getText())
+                        .specialization(specialization.getText())
                         .email(email.getText())
                         .password(password.getText().toCharArray())
                         .build();
@@ -120,7 +119,8 @@ public class AddDoctorPanel extends JFrame {
                 dispose();
             }
             else{
-                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null, JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(addUserForm, LabelsConstants.WRONG_EMAIL_ERROR, null,
+                        JOptionPane.ERROR_MESSAGE);
             }
         });
     }
