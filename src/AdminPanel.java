@@ -1,10 +1,10 @@
-import utils.LabelsConstants;
 import users.Doctor;
 import users.Patient;
 import users.Visit;
+import utils.LabelsConstants;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class AdminPanel extends JFrame {
