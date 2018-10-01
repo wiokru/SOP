@@ -51,7 +51,7 @@ public class LabelsConstants {
     public static final String PATIENT = "Pacjent: ";
     public static final String DATE_FORMAT = "DD.MM.YYYY";
     public static final String ADD_VISIT_ERROR = "Nie można dodać wizyty. Wybierz inny termin lub lekarza.";
+    public static final String MODIFY_VISIT_ERROR = "Nie można zaaktualizować wizyty. Wybierz inny termin lub lekarza.";
     public static final String ADD_VISIT_SUCCESS = "Dodano wizytę.";
-
-
+    public static final String MODIFY_VISIT_SUCCESS = "Zaaktualizowano wizytę.";
 }

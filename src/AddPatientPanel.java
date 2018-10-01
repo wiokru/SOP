@@ -49,9 +49,9 @@ public class AddPatientPanel extends JFrame {
         hg1.addComponent(emailLabel);
         verticalGroupEmail.addComponent(emailLabel);
 
-        JLabel password_label = new JLabel (LabelsConstants.TEMPORARY_PASSWORD);
-        hg1.addComponent(password_label);
-        verticalGroupPassword.addComponent(password_label);
+        JLabel passwordLabel = new JLabel(LabelsConstants.TEMPORARY_PASSWORD);
+        hg1.addComponent(passwordLabel);
+        verticalGroupPassword.addComponent(passwordLabel);
 
         JTextField name = new JTextField(TEXT_FIELD_SIZE);
         hg2.addComponent(name);
@@ -86,7 +86,7 @@ public class AddPatientPanel extends JFrame {
         addressLabel.setLabelFor(address);
         phoneLabel.setLabelFor(phone);
         emailLabel.setLabelFor(email);
-        password_label.setLabelFor(password);
+        passwordLabel.setLabelFor(password);
 
         name.isEditable();
         surname.isEditable();
