@@ -3,8 +3,12 @@ import users.Patient;
 import users.User;
 import users.Visit;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
 
 public class ShowItemPanel extends JFrame{
 

@@ -1,8 +1,19 @@
-import users.*;
+import users.Admin;
+import users.Doctor;
+import users.Patient;
+import users.User;
+import users.Visit;
 import utils.LabelsConstants;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import java.awt.EventQueue;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 public class SOP extends JFrame {
